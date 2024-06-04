@@ -99,8 +99,61 @@
             "scripts": [],
             "karmaConfig": "karma.conf.js"
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "payoneer:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "payoneer:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "payoneer:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "payoneer:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "payoneer:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "payoneer:serve:production"
+            }
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8b96795f-6de1-4abb-904d-b3332264eed5",
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }

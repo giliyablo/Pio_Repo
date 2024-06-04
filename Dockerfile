@@ -10,10 +10,10 @@ WORKDIR /app
 COPY . /app
 
 # Install all the dependencies
+RUN npm install -g @angular/cli
 RUN npm install
 
 # Generate the build of the application
-RUN npm run build
 RUN ng build
 
 # Stage 2: Serve app with nginx server
