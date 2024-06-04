@@ -9,6 +9,14 @@
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
+    customLaunchers: {
+	  'ChromeHeadless': {
+	    base: 'Chrome',
+	    flags: ['--headless',
+		        '--disable-gpu'
+		]
+      }
+    },
     client: {
       jasmine: {
         // you can add configuration options for Jasmine here
@@ -34,8 +42,8 @@
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false,
+    browsers: ['ChromeHeadless'],
+    singleRun: true,
     restartOnFileChange: true,
     listenAddress: 'localhost',
     hostname: 'localhost'
