@@ -8,7 +8,7 @@ export default defineConfig({
   
   
   component: {
-    devr: {
+    devServer: {
       framework: 'angular',
       bundler: 'webpack',
     },

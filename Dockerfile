@@ -20,4 +20,4 @@ RUN ng build
 EXPOSE 4200
 
 # Running command: 
-CMD ["ng", ""]
+CMD ["ng", "serve"]
