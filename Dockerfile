@@ -15,3 +15,9 @@ RUN npm install
 
 # Generate the build of the application
 RUN ng build
+
+# Expose port 4200
+EXPOSE 4200
+
+# Running command: 
+CMD ["ng", ""]

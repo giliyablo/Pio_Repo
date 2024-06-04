@@ -16,7 +16,7 @@ RUN npm install
 # Generate the build of the application
 RUN ng build
 
-# Stage 2: Serve app with nginx server
+# Stage 2:  app with nginx r
 
 # Use official nginx image as the base image
 FROM nginx:latest
