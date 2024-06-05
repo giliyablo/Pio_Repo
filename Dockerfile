@@ -1,37 +1,29 @@
-# Stage 1: Compile and Build angular codebase
+# Stage 1: Build Angular codebase (optimized)
 
-# Use official node image as the base image
-FROM node:latest as build
+FROM node:alpine AS build
 
 # Set the working directory
 WORKDIR /app
 
-# Add the source code to app
+# Copy the source code to app
 COPY . /app
 
-# Install all the dependencies
+# Install dependencies efficiently with multi-stage build
+RUN npm ci                 # Use npm ci for deterministic builds (avoids downloading unnecessary packages)
 RUN npm install -g @angular/cli
-RUN npm install
 
-# Generate the build of the application
-RUN ng build
-
-# Expose port 4200
-# EXPOSE 4200
-
-# Running command: 
-# CMD ["ng", "serve"]
+# Build the application
+RUN ng build --configuration=production
 
 # Stage 2: Serve app with nginx server
 
-# Use official nginx image as the base image
-FROM nginx:latest
+FROM nginx:alpine
 
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy the build output to nginx document root
+COPY --from=build /app/dist/payoneer/browser /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
 
+# Optimized CMD for nginx
 CMD ["nginx", "-g", "daemon off;"]
- 
