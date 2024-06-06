@@ -1,0 +1,21 @@
+# Stage 1: Build Angular codebase (optimized)
+FROM node:alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the source code to app
+COPY . /app
+
+# Install dependencies efficiently with multi-stage build
+RUN npm install
+RUN npm install -g @angular/cli --save
+RUN npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+RUN npm install karma-cli --save-dev
+RUN npm install cypress --save-dev
+RUN apk add chromium
+
+ENV CHROME_BIN=/usr/bin/chromium-browser
+
+# Build the application
+CMD ["ng", "e2e"]

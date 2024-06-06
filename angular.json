@@ -136,8 +136,8 @@
           "builder": "@cypress/schematic:cypress",
           "options": {
             "devServerTarget": "payoneer:serve",
-            "watch": true,
-            "headless": false
+            "watch": false,
+            "headless": true
           },
           "configurations": {
             "production": {
