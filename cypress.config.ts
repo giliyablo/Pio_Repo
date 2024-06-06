@@ -3,7 +3,7 @@ import { defineConfig } from 'cypress'
 export default defineConfig({
   
   e2e: {
-    'baseUrl': 'http://localhost:80'
+    'baseUrl': 'http://18.153.72.201:80'
   },
   
   
