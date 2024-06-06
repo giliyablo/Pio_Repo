@@ -10,13 +10,11 @@
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     customLaunchers: {
-	  'ChromeHeadless': {
-	    base: 'Chrome',
-	    flags: ['--headless',
-		        '--disable-gpu'
-		]
-      }
-    },
+	  ChromeHeadlessNoSandbox: {
+		base: 'ChromeHeadless',
+		flags: ['--no-sandbox']
+	  }
+	},
     client: {
       jasmine: {
         // you can add configuration options for Jasmine here
@@ -42,7 +40,7 @@
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessNoSandbox'],
     singleRun: true,
     restartOnFileChange: true,
     listenAddress: 'localhost',
